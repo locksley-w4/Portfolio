@@ -7,9 +7,11 @@
     <link rel="stylesheet" href="styles/index.css" />
   </head>
   <body>
-    <div class="cursor_follower"></div>
+    <!-- <div class="cursor_follower"></div> -->
     <div class="container">
-      <div class="sidemenu">
+      <div class="decor_2"></div>
+
+      <!-- <div class="sidemenu">
         <div class="logo">
           <img
             src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?cs=srgb&dl=pexels-pixabay-220453.jpg&fm=jpg"
@@ -22,24 +24,128 @@
           <li><a href="#"></a></li>
           <li><a href="#"></a></li>
         </ul>
-      </div>
-      <div class="main_info">
-        <div class="main_headings">
-          <h2>Hello👋</h2>
-          <h2>I'm a newbie web developer, who is searching for new projects</h2>
+      </div> -->
+
+      <section>
+        <div class="main-info">
+          <div class="main-info__card">
+            <div class="card__info">
+              <span class="label">line:</span>
+              <h3>Front-end Dev</h3>
+            </div>
+            <div class="card__info">
+              <span class="label">name:</span>
+              <h3>Asadbek</h3>
+            </div>
+            <div class="card__info">
+              <span class="label">family name:</span>
+              <h3>Asrarkhanov</h3>
+            </div>
+            <div class="card__info">
+              <span class="label">place of living:</span>
+              <h3>Tashkent | Uzb</h3>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="decor">
-        <div class="circle"></div>
-        <div class="circle"></div>
-        <div class="circle"></div>
-      </div>
+        <div class="decor">
+          <div class="circle"></div>
+        </div>
+      </section>
+      <section class="works_list">
+        <h2>
+          WORKS
+
+          <select name="filterWorks" id="filterWorksSelect">
+            <option value="all">All</option>
+            <option value="landings">landings</option>
+            <option value="games">games</option>
+            <option value="tools">tools</option>
+            <option value="completed">completed</option>
+            <option value="beta">beta</option>
+            <option value=""></option>
+          </select>
+
+          <div class="cube-decor">
+            <div class="face top"></div>
+            <div class="face left"></div>
+            <div class="face right"></div>
+            <div class="face front"></div>
+            <div class="face back"></div>
+            <div class="face bottom"></div>
+          </div>
+        </h2>
+        <ul class="works_list">
+          <li>
+            <a href="https://locksley-w4.github.io/locksley/Math%20quest/"
+              >Ariphmetic test<span class="note"></span
+            ></a>
+          </li>
+          <li>
+            <a href="https://locksley-w4.github.io/locksley/rr/"
+              >Zombie Run<span class="note beta">BETA</span></a
+            >
+          </li>
+          <li>
+            <a href="https://locksley-w4.github.io/locksley/rr/"
+              >PC course <span class="note">LAYOUT ONLY</span></a
+            >
+          </li>
+          <li>
+            <a href="https://locksley-w4.github.io/locksley/book/"
+              >ELibrary <span class="note">BETA</span></a
+            >
+          </li>
+          <!-- <li><a href="#"> <span class="note beta">BETA</span></a></li> -->
+        </ul>
+      </section>
+      <section class="contacts">
+        <div class="row contacts__row">
+          <div class="col contacts__col">
+            <a
+              href="https://github.com/locksley-w4"
+              class="contacts__link github"
+              ><div class="contacts__logo">
+                <img src="images/github-mark-white.svg" alt="GitHub" />
+                <div class="rotating-text">
+                  githubgithubgithubgithubgithubgithub
+                </div>
+              </div>
+              <h2>/locksley-w4</h2>
+            </a>
+          </div>
+          <div class="col contacts__col">
+            <a href="https://t.me/Asrarkhanov" class="contacts__link telegram">
+              <div class="contacts__logo">
+                <img src="images/telegram.svg" alt="Telegram" />
+                <div class="rotating-text telegram" style="top: -30px; left: -45px">
+                  telegramtelegramtelegramtelegramtele
+                </div>
+              </div>
+              <h2>@Asrarkhanov</h2></a
+            >
+          </div>
+          <div class="col contacts__col">
+            <a href="#" class="contacts__link gmail">
+              <div class="contacts__logo">
+                <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Gmail_icon_%282020%29.svg/2560px-Gmail_icon_%282020%29.svg.png"
+                alt="Gmail" />
+              </div>
+                
+              <h2>Gmail</h2></a
+            >
+          </div>
+        </div>
+      </section>
     </div>
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"
       integrity="sha512-z4OUqw38qNLpn1libAN9BsoDx6nbNFio5lA6CuTp9NlK83b89hgyCVq+N5FdBJptINztxn1Z3SaKSKUS5UP60Q=="
       crossorigin="anonymous"
       referrerpolicy="no-referrer"></script>
+    <!-- <script
+      type="text/javascript"
+      src="https://www.gstatic.com/charts/loader.js"></script> -->
     <script src="scripts/index.js"></script>
   </body>
 </html>
