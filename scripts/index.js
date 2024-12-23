@@ -1,5 +1,8 @@
 const circlesDecor = Array.from(document.querySelectorAll(".decor .circle"));
 const runnerElemsDecor = document.querySelector(".decor_2");
+const cubeDecor = document.querySelector(".cube-decor");
+const worksSection = document.querySelector("section.works_list");
+const worksList = document.querySelector("ul.works_list");
 const cursorFollower = document.querySelector(".cursor_follower");
 // let circlesDecorAnim = anime({
 //     targets: circlesDecor,
@@ -112,7 +115,7 @@ function animateRunnerElems() {
   }, 700);
 }
 
-animateRunnerElems();
+// animateRunnerElems();
 
 function createRunningElem(
   // width,
@@ -140,14 +143,6 @@ function createRunningElem(
   htmlElem.style.top = yCords + "%";
   // htmlElem.style.left = direction === "left" ? "100vw" : -width + "px";
   runnerElemsDecor.appendChild(htmlElem);
-  // anime({
-  //   targets: htmlElem,
-  //   duration: animDuration,
-  //   easing: "linear",
-  //   translateX:
-  //     direction === "left"
-  //       ? -(window.visualViewport.width + width)
-  //       : window.visualViewport.width + width,
   // });
   // htmlElem.style.transitionDuration = animDuration + "ms";
   // htmlElem.style[startPos] = "100%"
@@ -182,85 +177,28 @@ function moveToRight(elem, elemWidth, animDuration) {
     translateX: "120vw",
   });
 }
-// setInterval(() => {
-// }, 1000);
-
-// const projectsCarousel = document.querySelector(".projects_carousel");
-// const projectsCarouselLine = projectsCarousel.querySelector("ul.carousel_line");
-// const projectsCarouselControlLeft = document.querySelector(
-//   "section.projects .controls button.carousel_left"
-// );
-// const projectsCarouselControlRight = document.querySelector(
-//   "section.projects .controls button.carousel_right"
-// );
-
-// projectsCarouselControlLeft.addEventListener("click", moveCarouselLeft);
-// projectsCarouselControlRight.addEventListener("click", moveCarouselRight);
-
-// function moveCarouselLeft() {
-//   if (projectsCarouselLine.animISPlaying) return;
-//   let elem = projectsCarousel.querySelector("li");
-//   let elemWidth = +elem.clientWidth;
-//   // console.log(projectsCarouselLine.clientWidth - elemWidth *2 - 80);
-//   // console.log(getClientOffset(projectsCarouselLine));
-//   // console.log(-(projectsCarouselLine.clientWidth - elemWidth *2 - 80) > getClientOffset(projectsCarouselLine));
-//   if (getClientOffset(projectsCarouselLine) >= 0) return;
-//   projectsCarouselLine.animISPlaying = true;
-//   anime({
-//     targets: projectsCarouselLine,
-//     left: `+=${elemWidth + 20}`,
-//     duration: 300,
-//     easing: "easeInQuad",
-//     complete: () => {
-//       projectsCarouselLine.animISPlaying = false;
-//     },
-//   });
-// }
-// function moveCarouselRight() {
-//   if (projectsCarouselLine.animISPlaying) return;
-//   let elem = projectsCarousel.querySelector("li");
-//   let elemWidth = +elem.clientWidth;
-//   // console.log(projectsCarouselLine.clientWidth - elemWidth *2 - 80);
-//   // console.log(getClientOffset(projectsCarouselLine));
-//   // console.log(-(projectsCarouselLine.clientWidth - elemWidth *2 - 80) > getClientOffset(projectsCarouselLine));
-//   if (
-//     -(projectsCarouselLine.clientWidth - elemWidth * 2 - 80) >=
-//     getClientOffset(projectsCarouselLine)
-//     )
-//     return;
-
-//     projectsCarouselLine.animISPlaying = true;
-//   anime({
-//     targets: projectsCarouselLine,
-//     left: `-=${elemWidth + 20}`,
-//     duration: 300,
-//     easing: "easeInQuad",
-//     complete: () => {
-//       projectsCarouselLine.animISPlaying = false;
-//     },
-//   });
-// }
-
-// function getClientOffset(elem) {
-//   let offset = parseInt(getComputedStyle(elem).left);
-//   return offset;
-// }
-
 
 window.onload = () => {
   const rotatingTexts = Array.from(document.querySelectorAll(".rotating-text"));
-  
-  rotatingTexts.forEach(elem =>{
-  let text = elem.innerHTML;
-  let letters = text.split("");
-  elem.innerHTML = "";
-  for(let i = 0; i < letters.length; i++){
-    let span = document.createElement("span");
-    span.innerHTML = letters[i]
-    span.style.transform = `rotate(${10* i}deg)`;
-    elem.appendChild(span)
-    console.log(span);
-  }
-});
 
-}
+  rotatingTexts.forEach((elem) => {
+    let text = elem.innerHTML;
+    let letters = text.split("");
+    elem.innerHTML = "";
+    for (let i = 0; i < letters.length; i++) {
+      let span = document.createElement("span");
+      span.innerHTML = letters[i];
+      span.style.transform = `rotate(${10 * i}deg)`;
+      elem.appendChild(span);
+      console.log(span);
+    }
+  });
+};
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting) worksSection.classList.add("active")
+    else worksSection.classList.remove("active")
+  });
+});
+observer.observe(worksList);

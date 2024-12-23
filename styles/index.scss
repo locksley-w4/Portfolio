@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;1,400;1,500&display=swap");
+// @import url("https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;1,400;1,500&display=swap");
 *,
 ::before,
 ::after {
@@ -73,7 +73,7 @@ button {
 }
 .main-info {
   z-index: 3;
-  flex: 4 1 auto;
+  flex: 1 1 auto;
   height: 100%;
   color: rgb(37, 37, 37);
 
@@ -121,16 +121,16 @@ button {
 .decor {
   z-index: 8;
   position: absolute;
-  left: 60%;
-  top: 35%;
-  height: 80vw;
-  width: 80vw;
+  right: -50%;
+  top: -50%;
+  transition: 1s ease all;
+  // height: 80vw;
+  // width: 80vw;
+
   .circle {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    width: 80vw;
+    height: 80vw;
     background-color: #ebebeb;
     background-image: -webkit-linear-gradient(
       -45deg,
@@ -158,10 +158,6 @@ button {
       inset -25px -25px 40px rgba(0, 0, 0, 0.5);
     border-radius: 50%;
     transition: 2s linear all;
-    &:hover {
-      border-radius: 45%;
-      opacity: 0.9;
-    }
   }
 }
 .decor_2 {
@@ -241,14 +237,21 @@ button {
 }
 
 section.works_list {
-  background-color: #3f3f3f;
+  background-color: #333;
   display: flex;
   flex-wrap: wrap;
-  padding: 30px;
-  height: auto;
-  min-height: 60vh;
-  max-height: 100vh;
-  margin-top: 20vh;
+  padding: 10%;
+  min-height: 120vh;
+  max-height: 200vh;
+  margin-top: 17%;
+
+  &.active .decor{
+    right: -80%;
+  }
+  &.active .cube-decor{
+    left: -40%;
+  }
+
   h2 {
     color: #ebebeb;
     font-size: 3.6rem;
@@ -288,14 +291,15 @@ section.works_list {
     }
   }
   ul.works_list {
+    width: 100%;
+    flex: 1 1 100%;
     list-style: none;
-    max-height: 95vh;
+    max-height: 130vh;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     align-items: center;
-    width: 100%;
-    flex: 1 1 100%;
+    margin: 10% 10%;
     // padding-top: 50px;
     overflow-x: auto;
 
@@ -315,7 +319,7 @@ section.works_list {
         transition: 0.4s ease;
         color: #929292;
         text-decoration: none;
-        font-size: 2rem;
+        font-size: 1.2rem;
         overflow: hidden;
         text-shadow: 0 0 5px #3a3a3a2d;
         z-index: 1000;
@@ -351,74 +355,74 @@ section.works_list {
       }
     }
   }
-}
-.cube-decor {
-  padding: 0;
-  margin: 0;
-  transform-style: preserve-3d;
-  perspective: 10000px;
-  position: absolute;
-  top: 70%;
-  transition: 1.5s ease-out;
-  left: -20vw;
-  z-index: -1;
-
-  // animation: rotator 3s forwards infinite linear;
-  .face {
-    width: 600px;
-    height: 600px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  .cube-decor {
+    padding: 0;
+    margin: 0;
+    transform-style: preserve-3d;
+    perspective: 10000px;
     position: absolute;
-    transition: 0.5s ease;
-    background: rgb(237, 237, 237);
-
-    &:hover {
-      transform: translateZ(-200px);
-    }
-    // &.right, &.left, &.top, &.bottom{
-    // }
-    &.right {
-      transform: translateX(50%) rotateY(90deg);
-      background-image: linear-gradient(-45deg, #cfcfcf, rgb(235, 235, 235));
-      &:hover {
-        transform: translateX(60%) rotateY(90deg);
+    transition: 1s ease-out all;
+    left: -30%;
+    bottom: 15%;
+    z-index: -1;
+  
+    // animation: rotator 3s forwards infinite linear;
+    .face {
+      width: 450px;
+      height: 450px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      transition: 0.5s ease;
+      background: rgb(237, 237, 237);
+  
+      // &:hover {
+      //   transform: translateZ(-200px);
+      // }
+      // &.right, &.left, &.top, &.bottom{
+      // }
+      &.right {
+        transform: translateX(50%) rotateY(90deg);
+        background-image: linear-gradient(-45deg, #cfcfcf, rgb(235, 235, 235));
+        // &:hover {
+        //   transform: translateX(60%) rotateY(90deg);
+        // }
+      }
+      &.left {
+        transform: translateX(-50%) rotateY(90deg);
+        // &:hover {
+        //   transform: translateX(-60%) rotateY(90deg);
+        // }
+      }
+      &.top {
+        transform: translateY(-50%) rotateX(90deg);
+        // &:hover {
+        //   transform: translateY(-60%) rotateX(90deg);
+        // }
+      }
+      &.bottom {
+        transform: translateY(50%) rotateX(90deg);
+        // &:hover {
+        //   transform: translateY(60%) rotateX(90deg);
+        // }
+      }
+      &.front {
+        transform: translateZ(100%);
+        // &:hover {
+        //   transform: translateZ(350px);
+        // }
+      }
+      &.back {
+        transform: translateZ(-100%);
+        background-image: linear-gradient(-45deg, #e0e0e0, rgb(230, 230, 230));
+        // &:hover {
+        //   transform: translateZ(-350px);
+        // }
       }
     }
-    &.left {
-      transform: translateX(-50%) rotateY(90deg);
-      &:hover {
-        transform: translateX(-60%) rotateY(90deg);
-      }
-    }
-    &.top {
-      transform: translateY(-50%) rotateX(90deg);
-      &:hover {
-        transform: translateY(-60%) rotateX(90deg);
-      }
-    }
-    &.bottom {
-      transform: translateY(50%) rotateX(90deg);
-      &:hover {
-        transform: translateY(60%) rotateX(90deg);
-      }
-    }
-    &.front {
-      transform: translateZ(300px);
-      &:hover {
-        transform: translateZ(350px);
-      }
-    }
-    &.back {
-      transform: translateZ(-300px);
-      background-image: linear-gradient(-45deg, #e0e0e0, rgb(230, 230, 230));
-      &:hover {
-        transform: translateZ(-350px);
-      }
-    }
+    transform: rotateX(-26deg) rotateY(-15deg) rotateZ(-11deg);
   }
-  transform: rotateX(-26deg) rotateY(-15deg) rotateZ(-11deg);
 }
 
 .rotating-text {
@@ -435,7 +439,7 @@ section.works_list {
 section.contacts {
   z-index: 1;
   background: none;
-  margin-top: 20vh;
+  margin-top: 1vh;
   background: #333;
   .contacts__row {
     height: 100%;
@@ -525,9 +529,9 @@ section.contacts {
     width: 900px;
     height: 900px;
     border-radius: 50%;
-    top: 60vh;
-    left: auto;
-    right: -500px;
+    // top: 60vh;
+    // left: auto;
+    // right: -500px;
   }
   section.works_list ul.works_list li {
     width: 33%;
@@ -591,7 +595,7 @@ section.contacts {
 }
 @media screen and (max-width: 720px) {
   .decor {
-    top: 40vh;
+    // top: 40vh;
   }
   .main-info {
     z-index: 100;
@@ -642,7 +646,7 @@ section.contacts {
     width: 600px;
     height: 600px;
     right: -350px;
-    top: 60vh;
+    // top: 60vh;
   }
 
   section.works_list ul.works_list li {
