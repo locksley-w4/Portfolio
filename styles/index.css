@@ -123,13 +123,15 @@ button:focus {
   z-index: 8;
   position: absolute;
   right: -50%;
-  top: -50%;
+  top: -100%;
   transition: 1s ease all;
+  width: 80vw;
+  height: 80vw;
 }
 .decor .circle {
   position: absolute;
-  width: 80vw;
-  height: 80vw;
+  width: 100%;
+  height: 100%;
   background-color: #ebebeb;
   background-image: -ms-linear-gradient(-45deg, rgba(255, 255, 220, 0.3) 0%, transparent 100%);
   backdrop-filter: blur(35px);
@@ -213,15 +215,16 @@ section.works_list {
   display: flex;
   flex-wrap: wrap;
   padding: 10%;
-  min-height: 120vh;
+  min-height: 60vh;
   max-height: 200vh;
   margin-top: 17%;
 }
 section.works_list.active .decor {
-  right: -80%;
+  right: -60%;
 }
 section.works_list.active .cube-decor {
-  left: -40%;
+  transition-delay: 150ms;
+  left: -20%;
 }
 section.works_list h2 {
   color: #ebebeb;
@@ -331,7 +334,7 @@ section.works_list .cube-decor {
   perspective: 10000px;
   position: absolute;
   transition: 1s ease-out all;
-  left: -30%;
+  left: -20%;
   bottom: 15%;
   z-index: -1;
   transform: rotateX(-26deg) rotateY(-15deg) rotateZ(-11deg);
@@ -367,6 +370,14 @@ section.works_list .cube-decor .face.back {
   background-image: linear-gradient(-45deg, #e0e0e0, rgb(230, 230, 230));
 }
 
+.decor-circle{
+  position: absolute;
+  width: 120%;
+  height: 120%;
+  border-radius: 50%;
+  border: 3px solid #fff;
+}
+
 .rotating-text {
   position: absolute;
   animation: rotating-text 3s infinite forwards linear;
@@ -382,7 +393,7 @@ section.contacts {
   z-index: 1;
   background: none;
   margin-top: 1vh;
-  background: #333;
+  /* background: #333; */
 }
 section.contacts .contacts__row {
   height: 100%;
@@ -398,6 +409,9 @@ section.contacts .contacts__row .contacts__col {
 }
 section.contacts .contacts__row .contacts__col a.contacts__link {
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   height: 100%;
   display: flex;
@@ -421,16 +435,17 @@ section.contacts .contacts__row .contacts__col a.contacts__link h2 {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 15px;
+  /* padding: 15px; */
   border-radius: 50px;
-  flex: 1 1 auto;
-  background: #222222;
+  width: 250px;
+  margin: 0;
+  padding: 0;
+  background: #2c2c2c;
 }
 section.contacts .contacts__row .contacts__col a.contacts__link img {
   display: block;
   width: 300px;
   max-height: 300px;
-  margin-right: 10%;
 }
 section.contacts .contacts__row .contacts__col a.contacts__link .rotating-text {
   width: 360px;
@@ -490,8 +505,12 @@ section.contacts .contacts__row .contacts__col a.contacts__link .rotating-text s
   .main-info .main-info__card .card__info h3 {
     font-size: 2.7rem;
   }
-  .cube-decor {
-    left: -40vw;
+  .decor{
+    top: -40%;
+  }
+  section.works_list.active .cube-decor {
+    left: -40%;
+    bottom: 20%;
   }
   section.works_list ul.works_list li {
     width: 49%;
@@ -524,6 +543,9 @@ section.contacts .contacts__row .contacts__col a.contacts__link .rotating-text s
   }
 }
 @media screen and (max-width: 720px) {
+  ::-webkit-scrollbar{
+    display: none;
+  }
   .main-info {
     z-index: 100;
   }
@@ -533,6 +555,26 @@ section.contacts .contacts__row .contacts__col a.contacts__link .rotating-text s
     width: auto;
     margin: 3%;
   }
+  section.works_list .decor {
+    width: 500px;
+    height: 500px;
+    /* width: 100%; */
+    right: -30%;
+  }
+  .decor .circle {
+    width: 100%;
+    height: 100%;
+  }
+  section.works_list.active .decor{
+    right: -30%;
+  }
+  section.works_list .cube-decor {
+    left: -40%;
+  }
+  section.works_list.active .cube-decor {
+    left: -50%;
+  }
+  
   .main-info .main-info__card .card__info {
     flex-direction: column;
     align-items: start;
@@ -564,10 +606,11 @@ section.contacts .contacts__row .contacts__col a.contacts__link .rotating-text s
     padding: 5%;
     padding-top: 50px;
   }
-  .decor {
-    width: 600px;
-    height: 600px;
-    right: -350px;
+  section.works_list .cube-decor {
+    left: -60%;
+  }
+  section.works_list.active .cube-decor {
+    left: -80%;
   }
   section.works_list ul.works_list li {
     width: 100%;

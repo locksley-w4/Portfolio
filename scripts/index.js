@@ -1,4 +1,4 @@
-const circlesDecor = Array.from(document.querySelectorAll(".decor .circle"));
+const circlesDecor = Array.from(document.querySelectorAll(".decor-circle"));
 const runnerElemsDecor = document.querySelector(".decor_2");
 const cubeDecor = document.querySelector(".cube-decor");
 const worksSection = document.querySelector("section.works_list");
@@ -37,15 +37,18 @@ function randInt(min, max) {
 //   });
 // })();
 function animateCircle(circle) {
+  // let x = randInt(-180, 180);
+  // let y = randInt(-180, 180);
   let x = randInt(-180, 180);
   let y = randInt(-180, 180);
   // let angle = randInt(-360, 360);
   circle.anime = anime({
     targets: circle,
     easing: "linear",
-    duration: 3000,
+    duration: 1000,
     rotateX: x,
     rotateY: y,
+    // loop: true
     complete: function (anim) {
       animateCircle(circle);
     },
@@ -67,9 +70,9 @@ function getRandomRGBColor() {
 
   return `rgb(${red}, ${green}, ${blue})`;
 }
-// circlesDecor.forEach((circle) => {
-//   animateCircle(circle);
-// });
+  // circlesDecor.forEach((circle) => {
+  //   animateCircle(circle);
+  // });
 
 // window.addEventListener("pointermove", cursorFollowing);
 // window.addEventListener("pointerdown", cursorShrinking);
@@ -115,7 +118,7 @@ function animateRunnerElems() {
   }, 700);
 }
 
-// animateRunnerElems();
+animateRunnerElems(); // start animating runner elements
 
 function createRunningElem(
   // width,
@@ -125,27 +128,18 @@ function createRunningElem(
   animDurationMax = 8000
 ) {
   let htmlElem = document.createElement("div");
-
   let width = randInt(10, 80);
   let height = width * (randInt(15, 30) / 100);
   let color = randInt(0, 1) === 0 ? "green" : "purple";
-
   let yCords = randInt(0, 95);
   let direction = randInt(0, 1) === 0 ? "left" : "right";
-  // let zIndex = randInt(0,10);
   let animDuration = randInt(animDurationMin, animDurationMax);
 
   htmlElem.style.width = width + "px";
   htmlElem.style.height = height + "px";
-  // htmlElem.style.transitionDuration = animDuration + "ms";
   htmlElem.classList.add("runnerElem", direction, color);
-  // htmlElem.style.zIndex = zIndex;
   htmlElem.style.top = yCords + "%";
-  // htmlElem.style.left = direction === "left" ? "100vw" : -width + "px";
   runnerElemsDecor.appendChild(htmlElem);
-  // });
-  // htmlElem.style.transitionDuration = animDuration + "ms";
-  // htmlElem.style[startPos] = "100%"
   if (direction === "left") moveToLeft(htmlElem, width, animDuration);
   if (direction === "right") moveToRight(htmlElem, width, animDuration);
   setTimeout(() => {
@@ -154,10 +148,6 @@ function createRunningElem(
 }
 function moveToLeft(elem, elemWidth, animDuration) {
   elem.style.left = "100vw";
-  // elem.style.transition = `all linear ${animDuration}ms`;
-  // console.log(animDuration);
-  // // elem.style.left = -(window.visualViewport.width + elem.style.width);
-  // elem.style.transform = `translateX(${-(window.visualViewport.width + elem.style.width)}px)`
   anime({
     targets: elem,
     duration: animDuration,
@@ -196,9 +186,9 @@ window.onload = () => {
 };
 
 const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if(entry.isIntersecting) worksSection.classList.add("active")
-    else worksSection.classList.remove("active")
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) worksSection.classList.add("active");
+    else worksSection.classList.remove("active");
   });
 });
 observer.observe(worksList);
